@@ -1,0 +1,58 @@
+history of Java
+feature of Java (Why Java)
+operators
+Java Specifications
+JDK,JRE,JVM
+setup & config Java
+Bootstrap loader and Class Loader
+basic program structure
+dataTypes & variables
+Compiler and interpretor
+JVM Architecture
+conditional statements
+memory allocation (garbage collection)
+Keywords
+Access specifier
+Scope of a variable
+Class & Object
+package
+naming conventions
+String
+OOPS intro
+Class & Object
+encapsulation---> state & behavior
+Inheritance---->Parent & child relationship
+Has-A
+Is-A
+polymorphism (overloading,overriding)
+abstraction (Abstract class, interface)
+Exception handling
+Error
+Exception
+try,catch,finally
+throw,throws
+pre-defined exception
+user-defined exception
+--------------------------------------
+Collections API---->eliminate size restriction with array;
+No primitive datatyps are used
+Wrapper Classes--->only Objects
+Generics <T,V,K,E>
+
+List--->ArrayList,LinkedList
+Set--->HashSet
+how to choose a collection
+iterator
+listIterator
+Hashcode & equals
+Map---->HashMap<K,V>
+comparator--->custom sorting order
+comparable--->default sorting (natural sorting order)
+
+-----------------
+Datatime--->java.util.Date,java.sql.Date,java.text.SimpleDateTimeFormatter
+java.time.LocalDate
+DriverManager
+Connection String
+JDBC---->Statement,preparedStatement,Callable Statement
+ResultSet

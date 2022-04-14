@@ -1,0 +1,61 @@
+--20. emp_id, no.of days in bench
+select * from allocation
+select current_date-'2013-04-01'
+select emp_id,current_date-hire_date as Days_in_Company from employee
+select emp_id,sum(to_date-from_date) as working_days from allocation group by emp_id
+
+select e.emp_id, 
+(current_date-e.hire_date)-sum(a.to_date-a.from_date) as Days_in_Bench
+from employee e
+left join 
+allocation a
+on e.emp_id=a.emp_id
+group by e.emp_id
+order by e.emp_id
+
+
+-- 21 project_name, no.of employees
+
+select * from allocation
+select project_id,count(emp_id) from allocation group by project_id
+select * from project
+
+select a.project_id,p.project_name,count(a.emp_id) as employee_count
+from allocation a 
+inner join project p
+on a.project_id=p.project_id
+group by a.project_id,p.project_name
+order by a.project_id
+
+-- 22 role_name, No.of employees
+
+select * from role
+select role_id,count(emp_id) from allocation group by role_id
+
+select a.role_id,r.role_title,count(emp_id)
+from allocation a 
+inner join role r 
+on a.role_id=r.role_id
+group by a.role_id,r.role_title
+order by a.role_id
+
+--36 emp_id,Mgr_id, comments
+select *from employee;
+select e.emp_id,e.mgr_id,
+case 
+	when e.mgr_id isnull 
+	then 'No Manager' 
+	else 'Has Manager' 
+	end 
+as Comments
+from employee e
+left join employee m
+on e.mgr_id=m.emp_id
+
+
+--37 employeeName works for ManagerName
+
+select e.emp_name ||' Works for ' || m.emp_name as Employee_works_for
+from employee e 
+inner join employee m 
+on e.mgr_id=m.emp_id

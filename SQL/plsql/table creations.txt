@@ -1,0 +1,4 @@
+create table persons ( pid int PRIMARY KEY, pname varchar(100), email varchar(20) NOT NULL, city varchar(20));
+insert into persons values (1,'arjun','a.b@csscorp.com','chennai');
+create table orders ( oid int PRIMARY KEY, pid int, total number, foreign key(pid) references persons(pid));
+insert into orders values(100,1,200);

@@ -1,0 +1,1 @@
+UPDATE PRODUCT SET unit_price = 800 WHERE product_id = 100s

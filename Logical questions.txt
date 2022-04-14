@@ -1,0 +1,88 @@
+1. 
+double loanAmount=0;
+String jobType ="temporary";
+String maritalStatus="married";
+int experience=25;
+function double loanEligibilityCheck(jobType,maritalStatus,experience){
+	if(jobType.equals("Permanent"))
+		if(maritalStatus.equals("Single"))
+			if(experience>=30)
+				loanAmount=500000;
+			else
+				loanAmount=250000;
+		else
+			if(experience>=30)
+				loanAmount=600000;
+			else
+				loanAmount=350000;
+	else
+		loanAmount=100000;
+	return loanAmount;
+}
+
+3.
+
+Original[10]={};
+key[]={}
+output[];
+counter;
+		
+
+
+for(int i=0;i<=key.len();i++){
+	counter=0;
+	for(int j=0;j<=original.len();j++){
+		if(key[i]==original[j])
+			counter=counter+1;
+	}
+	output[i]=counter;
+}
+
+2.
+
+email="testemail@csscorp.com";
+function int len(char[] email){
+	int len=0;
+	int i=0;
+	while(true){
+		if(char[i]!=null)
+			len++;
+			i++;
+		else
+			break;
+	}
+}	
+function boolean emailValidation(String email){
+	validFlag=true;
+	atCounter=0;
+	atIndex=0;
+	dotIndex=0;
+	emailLen=len(email);
+	underScoreIndex=0;
+	if(email[0]=='.' or email[0]=='@')
+		validFlag=false;
+	if(email[email.len-1]!='m' or email[email.len-1]!='n')
+		validFlag=false;				
+	for(int i=1;i<email.len;i++){
+		if(email[i]=='@'){
+			atIndex=i;
+			atCounter++;
+		}
+		if(email[i]=='.')
+			dotIndex=i;
+		if(email[i]=='_')
+			underScoreIndex=i;	
+	}
+
+	if(atIndex+1==dotIndex && dotIndex>atIndex)
+		validFlag=false;
+	if(underScoreIndex > atIndex)
+		validFlag=false;
+	if(emailLen<10 || emailLen>30)
+		validFlag=false;
+	if(atCounter>1)
+		validFlag=false;
+	
+	return validFlag;
+}
+

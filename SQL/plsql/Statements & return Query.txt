@@ -1,0 +1,100 @@
+CREATE OR REPLACE FUNCTION insertmobile1(iemi_no integer,model varchar(20),brand varchar(20),
+cost float8)
+
+RETURNS integer AS $insertFlag$
+DECLARE 
+	flag integer := 0;
+	counter integer:=0;
+ BEGIN	
+	select count(*) into counter from mobile where iemi=iemi_no;
+	if counter!=1 then
+		INSERT INTO mobile VALUES(iemi_no, model, brand, cost);
+		flag := 1;
+		RETURN flag;
+	else
+		raise 'Duplicate IEMI code violates Primary key';
+	end if;
+END;
+$insertFlag$  LANGUAGE plpgsql;
+
+
+select * from mobile;
+select insertmobile1(124,'testmod','testbrand',12344);
+----------------------------------------------------------------------
+
+
+CREATE OR REPLACE FUNCTION getAllMobile()
+RETURNS Table(iemi_code integer,model varchar,brand varchar,cost float8) as $$
+DECLARE 
+	counter integer := 0;
+ BEGIN	
+	select count(*) into counter from mobile;
+	if counter>0 then
+		return query select * from mobile;
+	else
+		raise '% records found',counter; 
+	end if;
+END;
+$$  LANGUAGE plpgsql;
+
+
+select iemi_code,model,brand,cost from getAllMobile();
+
+
+----------------------------------------------------------
+
+drop function getmobile(integer)
+CREATE OR REPLACE FUNCTION getmobile(iemi_no integer)
+RETURNS Table(iemi_code integer,model varchar,brand varchar,cost float8) as $$
+DECLARE 
+	counter integer := 0;
+ BEGIN	
+	select count(*) into counter from mobile where iemi=iemi_no;
+	if counter>0 then
+		return query select * from mobile where iemi=iemi_no;
+	else
+		raise '% records found with the given iemi number %',counter,iemi_no; 
+	end if;
+END;
+$$  LANGUAGE plpgsql;
+
+
+select * from mobile;
+
+select iemi_code,model,brand,cost from getmobile(125)
+
+--------------------------------------------------------
+
+--LOOP
+drop function getAllMobileBrand()
+CREATE OR REPLACE FUNCTION getAllMobileBrand()
+RETURNS Table(brandName varchar) as $$
+DECLARE 
+	counter integer := 0;
+	mobiledata record;
+ BEGIN	
+	select count(*) into counter from mobile;
+	if counter>0 then
+		for mobiledata in 
+			(select brand from mobile) 
+		loop 
+			brandName:=UPPER(mobiledata.brand);
+			return Next; 
+		end loop;
+		
+	else
+		raise '% records found',counter; 
+	end if;
+END;
+$$  LANGUAGE plpgsql;
+
+select brandName from getAllMobileBrand();
+--------------------------------------
+
+do $$
+begin
+   for counter in reverse 5..1 loop
+      raise notice 'counter: %', counter;
+   end loop;
+end; $$
+
