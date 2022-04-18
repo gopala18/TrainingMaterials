@@ -74,17 +74,14 @@ insert into employeeskill values('E004','S004');
 insert into employeeskill values('E005','S005');
 
 
-insert into allocation values('E001','P001','R002','2013-04-01',300.00);
-insert into allocation values('E002','P002','R001','2012-06-01',300.00);
-insert into allocation values('E003','P001','R002','2013-03-01',350.00);
-insert into allocation values('E004','P002','R003','2012-05-01',300.00);
-
-
-insert into allocation values('E001','P002','R001','2014-06-01',200.00);
-insert into allocation values('E002','P002','R002','2019-04-01',350.00);
-insert into allocation values('E003','P001','R003','2020-03-01',350.00);
-insert into allocation values('E003','P003','R002','2019-05-01',330.00);
-
+insert into allocation values('E001','P001','R002','2013-04-01','2014-04-01',300.00);
+insert into allocation values('E002','P002','R001','2012-06-01','2014-06-25',300.00);
+insert into allocation values('E003','P001','R002','2013-03-01','2014-04-01',350.00);
+insert into allocation values('E004','P002','R003','2012-05-01','2012-06-01',300.00);
+insert into allocation values('E001','P002','R001','2014-06-01','2014-07-01',200.00);
+insert into allocation values('E002','P002','R002','2014-04-01','2015-06-01',350.00);
+insert into allocation values('E003','P001','R003','2020-03-01','2020-04-01',350.00);
+insert into allocation values('E003','P003','R002','2015-05-01','2016-06-01',330.00);
 
 
 
